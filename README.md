@@ -1,10 +1,14 @@
 *************************
-*                       *
-*      RSS Feed App     *
-*                       *
+                       
+      RSS Feed App     
+                       
 *************************
 
 Kotlin practice project
+
+Clean and build:
+
+    mvn clean install
 
 Launch by Docker:
 
