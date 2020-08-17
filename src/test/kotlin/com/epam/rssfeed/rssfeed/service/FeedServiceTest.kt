@@ -12,13 +12,13 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class FeedServiceTest {
 
-    @InjectMocks
-    lateinit var feedservice: FeedServiceImpl
-
-    @Test
-    fun testFeedService() {
-        val result = feedservice.readfeed()
-        assertNotNull(result)
-    }
+//    @InjectMocks
+//    lateinit var feedservice: FeedServiceImpl
+//
+//    @Test
+//    fun testFeedService() {
+//        val result = feedservice.readfeed()
+//        assertNotNull(result)
+//    }
 
 }

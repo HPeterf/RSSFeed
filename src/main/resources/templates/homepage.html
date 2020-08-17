@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <title>Latest Topics from index.hu</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<h2>Latest Topics from index.hu</h2>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date posted</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr th:each="topic : ${topicList}">
+            <td th:text="${topic.title}"></td>
+            <td th:text="${topic.date}"></td>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

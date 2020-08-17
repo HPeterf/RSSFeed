@@ -17,19 +17,19 @@ import org.springframework.test.context.junit4.SpringRunner
 @RunWith(SpringRunner::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class FeedControllerIntTest {
-
-    @Autowired
-    lateinit var feedservice: Feedservice
-
-    @Autowired
-    lateinit var testRestTemplate: TestRestTemplate
-
-    @Test
-    fun testFeedController() {
-
-        var request: HttpEntity<Topic> = HttpEntity(Topic(feedservice.readfeed().topicList))
-        val result = testRestTemplate.postForEntity("/rss",request, String::class.java)
-        assertNotNull(result)
-        assertEquals(result.statusCode, HttpStatus.OK)
-    }
+//
+//    @Autowired
+//    lateinit var feedservice: Feedservice
+//
+//    @Autowired
+//    lateinit var testRestTemplate: TestRestTemplate
+//
+//    @Test
+//    fun testFeedController() {
+//
+//        var request: HttpEntity<Topic> = HttpEntity(Topic(feedservice.readfeed().topicList))
+//        val result = testRestTemplate.postForEntity("/rss",request, String::class.java)
+//        assertNotNull(result)
+//        assertEquals(result.statusCode, HttpStatus.OK)
+//    }
 }
