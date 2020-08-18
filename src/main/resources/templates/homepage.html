@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <html lang="en">
-<head>
+<head th:include="head">
     <title>Latest Topics from index.hu</title>
     <meta charset="UTF-8">
 </head>
 
 <body>
-<h2>Latest Topics from index.hu</h2>
+<h2 class="header">Daily News feed from index.hu</h2>
 
 <div>
     <table>
         <thead>
         <tr>
-            <th>Title</th>
-            <th>Date posted</th>
+            <th class="topic">Topic</th>
+            <th class="topicLink">Read More</th>
+            <th class = "date">Date posted</th>
         </tr>
 
         </thead>
         <tbody>
         <tr th:each="topic : ${topicList}">
-            <td th:text="${topic.title}"></td>
-            <td th:text="${topic.date}"></td>
+            <td>
+                <div class="topicTitle" th:text="${topic.title}"></div>
+                <div class="topicDescription" th:text="${topic.description}"></div>
+            </td>
+            <td>
+                <a th:href = "${topic.link}">
+                <img class="image" alt="tovább a cikkre" src="/pictures/index.png" width="116" height="61">
+                </a>
+            </td>
+            <td class="datevalue" th:text ="${topic.date}"></td>
         </tbody>
     </table>
 </div>

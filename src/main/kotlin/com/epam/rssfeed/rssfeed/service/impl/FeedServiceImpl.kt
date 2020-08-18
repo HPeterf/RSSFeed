@@ -9,6 +9,7 @@ import com.rometools.rome.io.FeedException
 import com.rometools.rome.io.SyndFeedInput
 import com.rometools.rome.io.XmlReader
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Pageable
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import java.io.IOException
@@ -36,14 +37,16 @@ class FeedServiceImpl @Autowired constructor(private var rssRepository: RSSRepos
 
     @Scheduled(cron = "\${rss.feed.latest}")
     private fun saveTopics() {
-        val entryList = getEntryList()
-        entryList?.map { t -> t.title }?.distinct()?.toList()?.forEach { topic: String ->
-            val topicEntity = TopicEntity()
-            topicEntity.title = topic
-            rssRepository.save(topicEntity)
+        getEntryList()?.forEach { entry: SyndEntry ->
+            run {
+                val topicEntity = TopicEntity()
+                topicEntity.title = entry.title
+                topicEntity.link = entry.link
+                topicEntity.description = entry.description.value.toString()
+                rssRepository.save(topicEntity)
+            }
         }
     }
-
 
     @Throws(IOException::class, FeedException::class)
     private fun getEntryList(): List<SyndEntry>? {

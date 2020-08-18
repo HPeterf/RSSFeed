@@ -20,5 +20,13 @@ class TopicEntity: Serializable {
 
     @Column
     @NotBlank
+    var link: String = ""
+
+    @Column(length = 10000)
+    @NotBlank
+    var description: String = ""
+
+    @Column
+    @NotBlank
     var date: LocalDate = LocalDate.now()
 }
