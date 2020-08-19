@@ -4,12 +4,12 @@ import com.epam.rssfeed.rssfeed.DTO.Topic
 import com.epam.rssfeed.rssfeed.Entity.TopicEntity
 import com.epam.rssfeed.rssfeed.repository.RSSRepository
 import com.epam.rssfeed.rssfeed.service.Feedservice
+import com.rometools.rome.feed.synd.SyndEnclosure
 import com.rometools.rome.feed.synd.SyndEntry
 import com.rometools.rome.io.FeedException
 import com.rometools.rome.io.SyndFeedInput
 import com.rometools.rome.io.XmlReader
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.data.domain.Pageable
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import java.io.IOException
@@ -43,6 +43,9 @@ class FeedServiceImpl @Autowired constructor(private var rssRepository: RSSRepos
                 topicEntity.title = entry.title
                 topicEntity.link = entry.link
                 topicEntity.description = entry.description.value.toString()
+                entry.enclosures.forEach { e: SyndEnclosure ->
+                    topicEntity.picture = e.url
+                }
                 rssRepository.save(topicEntity)
             }
         }

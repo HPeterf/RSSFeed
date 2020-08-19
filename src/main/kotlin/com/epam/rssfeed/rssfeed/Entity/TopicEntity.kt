@@ -1,6 +1,7 @@
 package com.epam.rssfeed.rssfeed.Entity
 
 import java.io.Serializable
+import java.sql.Blob
 import java.time.LocalDate
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
@@ -29,4 +30,7 @@ class TopicEntity: Serializable {
     @Column
     @NotBlank
     var date: LocalDate = LocalDate.now()
+
+    @Column(length = 10000)
+    var picture: String = ""
 }
